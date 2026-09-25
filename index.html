@@ -170,90 +170,43 @@
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
  
-<header class="site">
-  <div class="nav-inner">
-    <a class="brand" href="/">
-      <span class="brand-mark" aria-hidden="true"></span>
-      Organization Name
-    </a>
-    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="primaryNav" aria-label="Open menu">
-      <span></span>
-    </button>
-    <nav class="primary" id="primaryNav" aria-label="Primary">
-      <ul class="desktop">
-        <li>
-          <button class="nav-toggle" aria-expanded="false" data-dd="about">About <span class="caret">▾</span></button>
-          <ul class="dropdown" id="dd-about">
-            <li><a href="about/vision.html">Our Vision</a></li>
-            <li><a href="about/history.html">History</a></li>
-            <li><a href="about/finance.html">Finance</a></li>
-            <li><a href="about/partners.html">Partners</a></li>
-            <li><a href="about/people/leadership.html">Leadership &amp; People</a></li>
-            <li><a href="about/people/organigram/organizational-chart.html">Organizational Chart</a></li>
-          </ul>
-        </li>
-        <li>
-          <button class="nav-toggle" aria-expanded="false" data-dd="transparency">Transparency <span class="caret">▾</span></button>
-          <ul class="dropdown" id="dd-transparency">
-            <li><a href="transparency/ethics.html">Ethics</a></li>
-          </ul>
-        </li>
-        <li>
-          <button class="nav-toggle" aria-expanded="false" data-dd="partnerships">Partnerships <span class="caret">▾</span></button>
-          <ul class="dropdown" id="dd-partnerships">
-            <li><a href="partnerships/stakeholders.html">Stakeholders</a></li>
-            <li><a href="partnerships/terminology-portal.html">Terminology Portal</a></li>
-            <li><a href="partnerships/meetings.html">Meetings</a></li>
-            <li><a href="partnerships/visit-us.html">Visit Us</a></li>
-            <li><a href="partnerships/collaborations.html">Collaborations</a></li>
-          </ul>
-        </li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="careers.html">Careers</a></li>
-        <li><a href="contact/faq.html">Contact</a></li>
-      </ul>
-      <ul class="mobile" id="mobileNav">
-        <li><button class="nav-toggle" aria-expanded="false" data-dd="m-about">About <span class="caret">▾</span></button>
-          <ul class="dropdown" id="dd-m-about">
-            <li><a href="about/vision.html">Our Vision</a></li>
-            <li><a href="about/history.html">History</a></li>
-            <li><a href="about/finance.html">Finance</a></li>
-            <li><a href="about/partners.html">Partners</a></li>
-            <li><a href="about/people/leadership.html">Leadership &amp; People</a></li>
-            <li><a href="about/people/organigram/organizational-chart.html">Organizational Chart</a></li>
-          </ul>
-        </li>
-        <li><button class="nav-toggle" aria-expanded="false" data-dd="m-transparency">Transparency <span class="caret">▾</span></button>
-          <ul class="dropdown" id="dd-m-transparency"><li><a href="transparency/ethics.html">Ethics</a></li></ul>
-        </li>
-        <li><button class="nav-toggle" aria-expanded="false" data-dd="m-partnerships">Partnerships <span class="caret">▾</span></button>
-          <ul class="dropdown" id="dd-m-partnerships">
-            <li><a href="partnerships/stakeholders.html">Stakeholders</a></li>
-            <li><a href="partnerships/terminology-portal.html">Terminology Portal</a></li>
-            <li><a href="partnerships/meetings.html">Meetings</a></li>
-            <li><a href="partnerships/visit-us.html">Visit Us</a></li>
-            <li><a href="partnerships/collaborations.html">Collaborations</a></li>
-          </ul>
-        </li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="careers.html">Careers</a></li>
-        <li><a href="contact/faq.html">Contact</a></li>
-      </ul>
-    </nav>
-  </div>
+<header>
+  <div class="logo">Organization Name</div>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle visually-hidden">
+  <label for="nav-toggle" class="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </label>
+  <nav>
+    <ul>
+      <li><a href="about.html">About</a>
+        <ul class="dropdown" aria-label="submenu">
+          <li><a href="vision.html">Our Vision</a></li>
+          <li><a href="finance.html">Finance</a></li>
+          <li><a href="leadership.html">Leadership & People</a></li>
+        </ul>
+      </li>
+      <li><a href="partnerships.html">Partnerships</a>
+        <ul class="dropdown" aria-label="submenu">
+          <li><a href="stakeholders.html">Stakeholders</a></li>
+          <li><a href="meetings.html">Meetings</a></li>
+        </ul>
+      </li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 </header>
  
 <section class="hero">
-  <div class="hero-inner">
-    <h1>Working in the open, for the people we serve.</h1>
-    <p>A clear look at our mission, our partners, and how we're governed — built to be easy to read for everyone, including people using screen magnification or glasses.</p>
-    <div class="actions">
-      <a class="btn btn-primary" href="about/vision.html">Read our vision</a>
-      <a class="btn btn-secondary" href="contact/faq.html">Get in touch</a>
-    </div>
+  <h1>Working in the people we serve.</h1>
+  <p>A clear look at our mission, our partners, and how we're governed — built to be easy to read for everyone, including people using screen magnification or glasses.</p>
+  <div class="hero-buttons">
+    <a href="vision.html" class="btn btn-red">Read our vision</a>
+    <a href="contact.html" class="btn btn-outline">Get in touch</a>
   </div>
 </section>
- 
+
 <main id="main">
   <div class="section-head">
     <h2>Explore the organization</h2>
