@@ -41,18 +41,18 @@
   a{color:var(--blue-bright)}
   img{max-width:100%}
   .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-
+ 
   .skip-link{
     position:absolute;left:1rem;top:-3.5rem;background:var(--red);color:#fff;
     padding:.75rem 1.25rem;border-radius:0 0 8px 8px;font-weight:600;z-index:100;
     transition:top .15s ease;
   }
   .skip-link:focus{top:0}
-
+ 
   a:focus-visible,button:focus-visible,summary:focus-visible{
     outline:3px solid var(--red);outline-offset:2px;border-radius:4px;
   }
-
+ 
   /* ---- Nav ---- */
   header.site{
     position:sticky;top:0;z-index:50;background:var(--white);
@@ -86,7 +86,7 @@
   li.open .dropdown{display:block}
   .dropdown a{display:block;padding:.55rem .7rem;border-radius:6px;font-weight:500}
   .dropdown a:hover{background:var(--blue-pale)}
-
+ 
   .menu-btn{
     display:inline-flex;align-items:center;justify-content:center;
     width:2.75rem;height:2.75rem;border-radius:8px;border:1px solid var(--line);
@@ -96,7 +96,7 @@
   .menu-btn span::before,.menu-btn span::after{content:"";position:absolute;left:0;width:100%;height:2px;background:var(--ink)}
   .menu-btn span::before{top:-6px}
   .menu-btn span::after{top:6px}
-
+ 
   /* ---- Hero ---- */
   .hero{background:var(--blue-deep);color:#fff;padding:3.5rem 1.25rem 4rem}
   .hero-inner{max-width:1180px;margin:0 auto;display:grid;gap:1.5rem;max-width:44rem}
@@ -113,13 +113,13 @@
   .btn-secondary:hover{background:rgba(255,255,255,.12)}
   @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
   @media (prefers-reduced-motion:reduce){.hero h1{animation:none}}
-
+ 
   /* ---- Sections ---- */
   main{max-width:1180px;margin:0 auto;padding:3rem 1.25rem 4rem}
   .section-head{max-width:40rem;margin-bottom:1.75rem}
   .section-head h2{font-size:1.7rem}
   .section-head p{color:var(--ink-soft);margin-top:.4rem}
-
+ 
   .card-grid{
     display:grid;gap:1.25rem;
     grid-template-columns:repeat(auto-fit,minmax(15.5rem,1fr));
@@ -134,12 +134,12 @@
   .card h3{font-size:1.15rem;color:var(--blue-deep)}
   .card p{color:var(--ink-soft);font-size:.98rem}
   .card .go{margin-top:auto;font-weight:700;color:var(--blue-bright);font-size:.95rem}
-
+ 
   .strip{background:var(--blue-pale);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
   .strip-inner{max-width:1180px;margin:0 auto;padding:2.5rem 1.25rem;display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:space-between;align-items:center}
   .strip-inner h2{font-size:1.4rem}
   .strip-inner p{color:var(--ink-soft);max-width:34rem;margin-top:.3rem}
-
+ 
   footer{background:var(--blue-deep);color:#dfe9f3;padding:2.75rem 1.25rem}
   .footer-inner{max-width:1180px;margin:0 auto;display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr))}
   footer h3{color:#fff;font-size:1rem;font-family:var(--sans);font-weight:700;margin-bottom:.7rem}
@@ -147,7 +147,7 @@
   footer a{color:#cfe0ee;text-decoration:none;font-size:.95rem}
   footer a:hover{text-decoration:underline}
   .footer-base{max-width:1180px;margin:2rem auto 0;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.18);font-size:.85rem;color:#b9cde0}
-
+ 
   @media (max-width:920px){
     nav.primary > ul.desktop{display:none !important}
     .menu-btn{display:inline-flex}
@@ -169,7 +169,7 @@
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
-
+ 
 <header class="site">
   <div class="nav-inner">
     <a class="brand" href="/">
@@ -242,7 +242,7 @@
     </nav>
   </div>
 </header>
-
+ 
 <section class="hero">
   <div class="hero-inner">
     <h1>Working in the open, for the people we serve.</h1>
@@ -253,13 +253,13 @@
     </div>
   </div>
 </section>
-
+ 
 <main id="main">
   <div class="section-head">
     <h2>Explore the organization</h2>
     <p>Every section below in two lines, so you can find what you need without digging.</p>
   </div>
-
+ 
   <div class="card-grid">
     <a class="card" href="about/vision.html">
       <span class="tag">About</span>
@@ -267,49 +267,49 @@
       <p>What we stand for and how we got here, plus how our funding is raised and spent.</p>
       <span class="go">Visit About →</span>
     </a>
-
+ 
     <a class="card" href="about/people/leadership.html">
       <span class="tag">About</span>
       <h3>People &amp; leadership</h3>
       <p>Meet our leadership and experts, and see the full organizational chart and governing bodies.</p>
       <span class="go">Meet our people →</span>
     </a>
-
+ 
     <a class="card" href="transparency/ethics.html">
       <span class="tag">Transparency</span>
       <h3>Ethics &amp; accountability</h3>
       <p>Our ethics standards and the policies that keep our work open to scrutiny.</p>
       <span class="go">See our standards →</span>
     </a>
-
+ 
     <a class="card" href="partnerships/stakeholders.html">
       <span class="tag">Partnerships</span>
       <h3>Stakeholders &amp; collaborations</h3>
       <p>Who we work with, how meetings are run, and how to become a partner or visit us.</p>
       <span class="go">See partnerships →</span>
     </a>
-
+ 
     <a class="card" href="partnerships/terminology-portal.html">
       <span class="tag">Partnerships</span>
       <h3>Terminology portal</h3>
       <p>A shared glossary that keeps our language consistent across partners and projects.</p>
       <span class="go">Open the portal →</span>
     </a>
-
+ 
     <a class="card" href="blog.html">
       <span class="tag">News</span>
       <h3>Blog</h3>
       <p>Updates, stories and announcements from across the organization, as they happen.</p>
       <span class="go">Read the blog →</span>
     </a>
-
+ 
     <a class="card" href="careers.html">
       <span class="tag">Join us</span>
       <h3>Careers</h3>
       <p>Open roles and what it's like to work here, from entry-level to leadership.</p>
       <span class="go">See open roles →</span>
     </a>
-
+ 
     <a class="card" href="contact/faq.html">
       <span class="tag">Support</span>
       <h3>Contact &amp; FAQ</h3>
@@ -318,7 +318,7 @@
     </a>
   </div>
 </main>
-
+ 
 <div class="strip">
   <div class="strip-inner">
     <div>
@@ -328,7 +328,7 @@
     <a class="btn btn-primary" href="privacy.html">Read our privacy policy</a>
   </div>
 </div>
-
+ 
 <footer>
   <div class="footer-inner">
     <div>
@@ -371,12 +371,12 @@
   </div>
   <p class="footer-base">© 2026 Organization Name. Built for accessibility: high contrast, scalable text, keyboard navigation.</p>
 </footer>
-
+ 
 <script>
   // Dropdowns: only one open at a time, ever. Hover opens on desktop, click/Enter works everywhere.
   var toggles = Array.prototype.slice.call(document.querySelectorAll('.nav-toggle'));
   var ddLis = toggles.map(function(btn){ return btn.closest('li'); });
-
+ 
   function closeAll(except){
     ddLis.forEach(function(li){
       if(li !== except && li.classList.contains('open')){
@@ -386,7 +386,7 @@
     });
   }
   function isDesktop(){ return window.matchMedia('(min-width:921px)').matches; }
-
+ 
   toggles.forEach(function(btn){
     var li = btn.closest('li');
     btn.addEventListener('click', function(e){
@@ -408,14 +408,14 @@
       btn.setAttribute('aria-expanded','false');
     });
   });
-
+ 
   document.addEventListener('click', function(e){
     if(!e.target.closest('nav.primary li')) closeAll(null);
   });
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape') closeAll(null);
   });
-
+ 
   var menuBtn = document.getElementById('menuBtn');
   var primaryNav = document.getElementById('primaryNav');
   menuBtn.addEventListener('click', function(){
@@ -427,3 +427,4 @@
 </script>
 </body>
 </html>
+ 
