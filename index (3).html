@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Home — Organization</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#ffffff;
+    --blue-deep:#0b3d62;
+    --blue-bright:#2e75c7;
+    --blue-pale:#eff4f8;
+    --red:#c4223a;
+    --red-dark:#9c1a2e;
+    --ink:#16202b;
+    --ink-soft:#44525e;
+    --line:#d7e2ea;
+    --radius:10px;
+    --serif:'Newsreader', Georgia, serif;
+    --sans:'Public Sans', system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *,*::before,*::after{box-sizing:inherit}
+  html{scroll-padding-top:5rem}
+  body{
+    margin:0;
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--white);
+    font-size:1.0625rem;
+    line-height:1.6;
+    -webkit-text-size-adjust:100%;
+  }
+  h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--blue-deep);line-height:1.25;margin:0}
+  p{margin:0}
+  a{color:var(--blue-bright)}
+  img{max-width:100%}
+  .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  .skip-link{
+    position:absolute;left:1rem;top:-3.5rem;background:var(--red);color:#fff;
+    padding:.75rem 1.25rem;border-radius:0 0 8px 8px;font-weight:600;z-index:100;
+    transition:top .15s ease;
+  }
+  .skip-link:focus{top:0}
+
+  a:focus-visible,button:focus-visible,summary:focus-visible{
+    outline:3px solid var(--red);outline-offset:2px;border-radius:4px;
+  }
+
+  /* ---- Nav ---- */
+  header.site{
+    position:sticky;top:0;z-index:50;background:var(--white);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1180px;margin:0 auto;padding:.85rem 1.25rem;
+    display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  }
+  .brand{
+    font-family:var(--serif);font-weight:700;font-size:1.3rem;color:var(--blue-deep);
+    text-decoration:none;display:flex;align-items:center;gap:.6rem;
+  }
+  .brand-mark{width:1.6rem;height:1.6rem;border-radius:50%;background:conic-gradient(var(--blue-deep) 0 50%, var(--red) 50% 100%);flex:0 0 auto}
+  nav.primary ul{list-style:none;display:flex;gap:.25rem;margin:0;padding:0;flex-wrap:wrap}
+  nav.primary > ul{display:none}
+  nav.primary li{position:relative}
+  nav.primary a, nav.primary button.nav-toggle{
+    display:inline-flex;align-items:center;gap:.3rem;
+    font-size:1rem;font-weight:600;color:var(--ink);text-decoration:none;
+    padding:.6rem .8rem;border-radius:8px;background:none;border:none;font-family:var(--sans);
+    cursor:pointer;
+  }
+  nav.primary a:hover, nav.primary button.nav-toggle:hover{background:var(--blue-pale);color:var(--blue-deep)}
+  .caret{font-size:.6rem;margin-top:.1rem}
+  .dropdown{
+    position:absolute;top:100%;left:0;min-width:15rem;background:var(--white);
+    border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 12px 28px rgba(11,61,98,.14);
+    padding:.5rem;display:none;
+  }
+  li.open .dropdown{display:block}
+  .dropdown a{display:block;padding:.55rem .7rem;border-radius:6px;font-weight:500}
+  .dropdown a:hover{background:var(--blue-pale)}
+
+  .menu-btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:2.75rem;height:2.75rem;border-radius:8px;border:1px solid var(--line);
+    background:var(--white);cursor:pointer;
+  }
+  .menu-btn span{display:block;width:1.25rem;height:2px;background:var(--ink);position:relative}
+  .menu-btn span::before,.menu-btn span::after{content:"";position:absolute;left:0;width:100%;height:2px;background:var(--ink)}
+  .menu-btn span::before{top:-6px}
+  .menu-btn span::after{top:6px}
+
+  /* ---- Hero ---- */
+  .hero{background:var(--blue-deep);color:#fff;padding:3.5rem 1.25rem 4rem}
+  .hero-inner{max-width:1180px;margin:0 auto;display:grid;gap:1.5rem;max-width:44rem}
+  .hero h1{color:#fff;font-size:clamp(2rem,4.6vw,2.9rem);animation:rise .6s ease both}
+  .hero p{color:#dfe9f3;font-size:1.15rem;max-width:36rem}
+  .hero .actions{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:.5rem}
+  .btn{
+    display:inline-flex;align-items:center;padding:.85rem 1.5rem;border-radius:8px;
+    font-weight:700;text-decoration:none;font-size:1rem;border:2px solid transparent;
+  }
+  .btn-primary{background:var(--red);color:#fff}
+  .btn-primary:hover{background:var(--red-dark)}
+  .btn-secondary{background:transparent;color:#fff;border-color:#fff}
+  .btn-secondary:hover{background:rgba(255,255,255,.12)}
+  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+  @media (prefers-reduced-motion:reduce){.hero h1{animation:none}}
+
+  /* ---- Sections ---- */
+  main{max-width:1180px;margin:0 auto;padding:3rem 1.25rem 4rem}
+  .section-head{max-width:40rem;margin-bottom:1.75rem}
+  .section-head h2{font-size:1.7rem}
+  .section-head p{color:var(--ink-soft);margin-top:.4rem}
+
+  .card-grid{
+    display:grid;gap:1.25rem;
+    grid-template-columns:repeat(auto-fit,minmax(15.5rem,1fr));
+  }
+  .card{
+    border:1px solid var(--line);border-radius:var(--radius);padding:1.4rem;
+    background:var(--white);display:flex;flex-direction:column;gap:.6rem;
+    text-decoration:none;color:var(--ink);
+  }
+  .card:hover{border-color:var(--blue-bright)}
+  .card .tag{font-size:.8rem;font-weight:700;color:var(--red)}
+  .card h3{font-size:1.15rem;color:var(--blue-deep)}
+  .card p{color:var(--ink-soft);font-size:.98rem}
+  .card .go{margin-top:auto;font-weight:700;color:var(--blue-bright);font-size:.95rem}
+
+  .strip{background:var(--blue-pale);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .strip-inner{max-width:1180px;margin:0 auto;padding:2.5rem 1.25rem;display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:space-between;align-items:center}
+  .strip-inner h2{font-size:1.4rem}
+  .strip-inner p{color:var(--ink-soft);max-width:34rem;margin-top:.3rem}
+
+  footer{background:var(--blue-deep);color:#dfe9f3;padding:2.75rem 1.25rem}
+  .footer-inner{max-width:1180px;margin:0 auto;display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr))}
+  footer h3{color:#fff;font-size:1rem;font-family:var(--sans);font-weight:700;margin-bottom:.7rem}
+  footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem}
+  footer a{color:#cfe0ee;text-decoration:none;font-size:.95rem}
+  footer a:hover{text-decoration:underline}
+  .footer-base{max-width:1180px;margin:2rem auto 0;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.18);font-size:.85rem;color:#b9cde0}
+
+  @media (max-width:920px){
+    nav.primary > ul.desktop{display:none !important}
+    .menu-btn{display:inline-flex}
+    nav.primary.open > ul.mobile{
+      display:flex;flex-direction:column;position:absolute;left:0;right:0;top:100%;
+      background:#fff;border-bottom:1px solid var(--line);padding:.5rem 1.25rem 1rem;
+      box-shadow:0 14px 24px rgba(11,61,98,.12);
+    }
+    nav.primary ul.mobile{display:none}
+    nav.primary.open .dropdown{position:static;box-shadow:none;border:none;padding-left:.75rem;display:block}
+    nav.primary.open li{position:static}
+  }
+  @media (min-width:921px){
+    .menu-btn{display:none}
+    nav.primary ul.desktop{display:flex}
+    nav.primary ul.mobile{display:none !important}
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site">
+  <div class="nav-inner">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true"></span>
+      Organization Name
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="primaryNav" aria-label="Open menu">
+      <span></span>
+    </button>
+    <nav class="primary" id="primaryNav" aria-label="Primary">
+      <ul class="desktop">
+        <li>
+          <button class="nav-toggle" aria-expanded="false" data-dd="about">About <span class="caret">▾</span></button>
+          <ul class="dropdown" id="dd-about">
+            <li><a href="about/vision.html">Our Vision</a></li>
+            <li><a href="about/history.html">History</a></li>
+            <li><a href="about/finance.html">Finance</a></li>
+            <li><a href="about/partners.html">Partners</a></li>
+            <li><a href="about/people/leadership.html">Leadership &amp; People</a></li>
+            <li><a href="about/people/organigram/organizational-chart.html">Organizational Chart</a></li>
+          </ul>
+        </li>
+        <li>
+          <button class="nav-toggle" aria-expanded="false" data-dd="transparency">Transparency <span class="caret">▾</span></button>
+          <ul class="dropdown" id="dd-transparency">
+            <li><a href="transparency/ethics.html">Ethics</a></li>
+          </ul>
+        </li>
+        <li>
+          <button class="nav-toggle" aria-expanded="false" data-dd="partnerships">Partnerships <span class="caret">▾</span></button>
+          <ul class="dropdown" id="dd-partnerships">
+            <li><a href="partnerships/stakeholders.html">Stakeholders</a></li>
+            <li><a href="partnerships/terminology-portal.html">Terminology Portal</a></li>
+            <li><a href="partnerships/meetings.html">Meetings</a></li>
+            <li><a href="partnerships/visit-us.html">Visit Us</a></li>
+            <li><a href="partnerships/collaborations.html">Collaborations</a></li>
+          </ul>
+        </li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact/faq.html">Contact</a></li>
+      </ul>
+      <ul class="mobile" id="mobileNav">
+        <li><button class="nav-toggle" aria-expanded="false" data-dd="m-about">About <span class="caret">▾</span></button>
+          <ul class="dropdown" id="dd-m-about">
+            <li><a href="about/vision.html">Our Vision</a></li>
+            <li><a href="about/history.html">History</a></li>
+            <li><a href="about/finance.html">Finance</a></li>
+            <li><a href="about/partners.html">Partners</a></li>
+            <li><a href="about/people/leadership.html">Leadership &amp; People</a></li>
+            <li><a href="about/people/organigram/organizational-chart.html">Organizational Chart</a></li>
+          </ul>
+        </li>
+        <li><button class="nav-toggle" aria-expanded="false" data-dd="m-transparency">Transparency <span class="caret">▾</span></button>
+          <ul class="dropdown" id="dd-m-transparency"><li><a href="transparency/ethics.html">Ethics</a></li></ul>
+        </li>
+        <li><button class="nav-toggle" aria-expanded="false" data-dd="m-partnerships">Partnerships <span class="caret">▾</span></button>
+          <ul class="dropdown" id="dd-m-partnerships">
+            <li><a href="partnerships/stakeholders.html">Stakeholders</a></li>
+            <li><a href="partnerships/terminology-portal.html">Terminology Portal</a></li>
+            <li><a href="partnerships/meetings.html">Meetings</a></li>
+            <li><a href="partnerships/visit-us.html">Visit Us</a></li>
+            <li><a href="partnerships/collaborations.html">Collaborations</a></li>
+          </ul>
+        </li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact/faq.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Working in the open, for the people we serve.</h1>
+    <p>A clear look at our mission, our partners, and how we're governed — built to be easy to read for everyone, including people using screen magnification or glasses.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="about/vision.html">Read our vision</a>
+      <a class="btn btn-secondary" href="contact/faq.html">Get in touch</a>
+    </div>
+  </div>
+</section>
+
+<main id="main">
+  <div class="section-head">
+    <h2>Explore the organization</h2>
+    <p>Every section below in two lines, so you can find what you need without digging.</p>
+  </div>
+
+  <div class="card-grid">
+    <a class="card" href="about/vision.html">
+      <span class="tag">About</span>
+      <h3>Vision, history &amp; finance</h3>
+      <p>What we stand for and how we got here, plus how our funding is raised and spent.</p>
+      <span class="go">Visit About →</span>
+    </a>
+
+    <a class="card" href="about/people/leadership.html">
+      <span class="tag">About</span>
+      <h3>People &amp; leadership</h3>
+      <p>Meet our leadership and experts, and see the full organizational chart and governing bodies.</p>
+      <span class="go">Meet our people →</span>
+    </a>
+
+    <a class="card" href="transparency/ethics.html">
+      <span class="tag">Transparency</span>
+      <h3>Ethics &amp; accountability</h3>
+      <p>Our ethics standards and the policies that keep our work open to scrutiny.</p>
+      <span class="go">See our standards →</span>
+    </a>
+
+    <a class="card" href="partnerships/stakeholders.html">
+      <span class="tag">Partnerships</span>
+      <h3>Stakeholders &amp; collaborations</h3>
+      <p>Who we work with, how meetings are run, and how to become a partner or visit us.</p>
+      <span class="go">See partnerships →</span>
+    </a>
+
+    <a class="card" href="partnerships/terminology-portal.html">
+      <span class="tag">Partnerships</span>
+      <h3>Terminology portal</h3>
+      <p>A shared glossary that keeps our language consistent across partners and projects.</p>
+      <span class="go">Open the portal →</span>
+    </a>
+
+    <a class="card" href="blog.html">
+      <span class="tag">News</span>
+      <h3>Blog</h3>
+      <p>Updates, stories and announcements from across the organization, as they happen.</p>
+      <span class="go">Read the blog →</span>
+    </a>
+
+    <a class="card" href="careers.html">
+      <span class="tag">Join us</span>
+      <h3>Careers</h3>
+      <p>Open roles and what it's like to work here, from entry-level to leadership.</p>
+      <span class="go">See open roles →</span>
+    </a>
+
+    <a class="card" href="contact/faq.html">
+      <span class="tag">Support</span>
+      <h3>Contact &amp; FAQ</h3>
+      <p>Answers to common questions, and the fastest way to reach the right team.</p>
+      <span class="go">Get help →</span>
+    </a>
+  </div>
+</main>
+
+<div class="strip">
+  <div class="strip-inner">
+    <div>
+      <h2>Privacy, always in plain language</h2>
+      <p>How we collect, use and protect your data — written to be understood, not just compliant.</p>
+    </div>
+    <a class="btn btn-primary" href="privacy.html">Read our privacy policy</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <h3>About</h3>
+      <ul>
+        <li><a href="about/vision.html">Vision</a></li>
+        <li><a href="about/history.html">History</a></li>
+        <li><a href="about/finance.html">Finance</a></li>
+        <li><a href="about/partners.html">Partners</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>People</h3>
+      <ul>
+        <li><a href="about/people/leadership.html">Leadership</a></li>
+        <li><a href="about/people/experts.html">Experts</a></li>
+        <li><a href="about/people/organigram/organizational-chart.html">Org chart</a></li>
+        <li><a href="about/people/organigram/worldwide-offices.html">Worldwide offices</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Partnerships</h3>
+      <ul>
+        <li><a href="partnerships/stakeholders.html">Stakeholders</a></li>
+        <li><a href="partnerships/meetings.html">Meetings</a></li>
+        <li><a href="partnerships/visit-us.html">Visit us</a></li>
+        <li><a href="partnerships/collaborations.html">Collaborations</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>More</h3>
+      <ul>
+        <li><a href="transparency/ethics.html">Transparency</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact/faq.html">Contact / FAQ</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="footer-base">© 2026 Organization Name. Built for accessibility: high contrast, scalable text, keyboard navigation.</p>
+</footer>
+
+<script>
+  // Dropdowns: only one open at a time, ever. Hover opens on desktop, click/Enter works everywhere.
+  var toggles = Array.prototype.slice.call(document.querySelectorAll('.nav-toggle'));
+  var ddLis = toggles.map(function(btn){ return btn.closest('li'); });
+
+  function closeAll(except){
+    ddLis.forEach(function(li){
+      if(li !== except && li.classList.contains('open')){
+        li.classList.remove('open');
+        li.querySelector('.nav-toggle').setAttribute('aria-expanded','false');
+      }
+    });
+  }
+  function isDesktop(){ return window.matchMedia('(min-width:921px)').matches; }
+
+  toggles.forEach(function(btn){
+    var li = btn.closest('li');
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var willOpen = !li.classList.contains('open');
+      closeAll(li);
+      li.classList.toggle('open', willOpen);
+      btn.setAttribute('aria-expanded', String(willOpen));
+    });
+    li.addEventListener('mouseenter', function(){
+      if(!isDesktop()) return;
+      closeAll(li);
+      li.classList.add('open');
+      btn.setAttribute('aria-expanded','true');
+    });
+    li.addEventListener('mouseleave', function(){
+      if(!isDesktop()) return;
+      li.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');
+    });
+  });
+
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('nav.primary li')) closeAll(null);
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeAll(null);
+  });
+
+  var menuBtn = document.getElementById('menuBtn');
+  var primaryNav = document.getElementById('primaryNav');
+  menuBtn.addEventListener('click', function(){
+    var open = primaryNav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    if(!open) closeAll(null);
+  });
+</script>
+</body>
+</html>
